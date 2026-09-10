@@ -8,13 +8,28 @@ and labels before using the resume.
 
 ## Overleaf
 
-1. Upload this entire folder as a ZIP using **New Project → Upload Project**.
-2. Set the main document to `main.tex` and the compiler to **pdfLaTeX**.
-3. Edit `resume.tex`, then click **Recompile**.
+> **Three files are required.** This is a standalone project that requires
+> `main.tex`, `resume.tex`, and `resume-matcher.sty` together. Copy-pasting a
+> single `.tex` file into Overleaf will not work. Upload the complete template
+> ZIP, or ZIP this entire folder and upload it.
 
-You need every `.tex` and `.sty` file in this folder. No Resume Matcher
-installation, external font files, shell escape, or custom build step is required.
-The packages and fonts are supplied by TeX Live on Overleaf.
+1. In Overleaf, select **New project → Existing project (.zip)** and upload
+   this template's ZIP.
+2. Set the main document to `main.tex` and the compiler to **pdfLaTeX**.
+3. Open `resume.tex` and replace the sample name, experience, education, skills,
+   and contact details. Update both the visible labels and destinations of links.
+4. In `main.tex`, update `pdftitle` and `pdfauthor` to match your details.
+5. Click **Recompile**, inspect every page, and use **Download PDF** to save
+   your resume.
+
+Keep the three required files together at the project's root. If starting with
+an empty project, upload all three files, or create files with those exact names
+and paste each file's matching contents. Neither `.tex` file compiles by itself:
+`main.tex` loads the style and resume content, while `resume.tex` has no document
+setup of its own. Single-file exports are not included.
+
+No Resume Matcher installation, external font files, shell escape, or custom
+build step is required. The packages and fonts are supplied by TeX Live on Overleaf.
 
 ## Local compilation
 

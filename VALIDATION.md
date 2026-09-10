@@ -102,4 +102,23 @@ Frontend `npm run lint` also passed. The application itself was not changed.
 - PDF text is selectable and extractable. ATS behavior and two-column reading
   order depend on the receiving parser and are not certified here.
 - CJK and right-to-left scripts need additional language/font configuration.
-- No GitHub repository or Overleaf gallery listing has been published.
+- No GitHub repository or Overleaf gallery listing had been published at the
+  time of the 6 September compilation checks. The current repository location
+  and visibility are documented in `README.md`.
+
+## Documentation and packaging review (10 September 2026)
+
+The main README and all seven template READMEs now explicitly state that
+`main.tex`, `resume.tex`, and `resume-matcher.sty` are required together.
+They include the Overleaf upload, compiler, editing, metadata, and PDF download
+instructions. Copy-pasting one existing `.tex` file is not supported.
+
+The eight distribution ZIPs were refreshed to include the updated documentation
+and checked for CRC errors, unsafe paths, missing files, and stale contents.
+The seven individual ZIPs contain their six documented project files; the
+collection ZIP contains 71 files and excludes itself and Git metadata.
+
+The LaTeX sources, styling, build scripts, and PDF/PNG previews are unchanged
+from the imported collection. This review did not rerun compilation: no LaTeX
+engine is installed in the review environment. The compilation results above
+remain the earlier 6 September results. The Overleaf service was not exercised.

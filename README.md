@@ -4,6 +4,11 @@ Seven standalone, editable LaTeX resume templates adapted from
 [Resume Matcher](https://github.com/srbhr/Resume-Matcher). Upload one template ZIP
 to Overleaf, edit the sample content, and compile with **pdfLaTeX**.
 
+> **Three files are required.** These are standalone projects that require
+> `main.tex`, `resume.tex`, and `resume-matcher.sty` together. Copy-pasting a
+> single `.tex` file into Overleaf will not work. Upload the complete ZIP for
+> your chosen template.
+
 Each project includes its own styling files. There are no dependencies on the
 Resume Matcher app, no external font downloads, and no shell-escape requirement.
 All names, employers, accomplishments, and contact details in the samples are fictional.
@@ -76,7 +81,8 @@ own resume. All supplied applicant details are dummy data.
 
 1. Download the ZIP for **one template** from the table above. On GitHub, open
    the ZIP's file page and use **Download raw file**.
-2. In Overleaf, select **New Project → Upload Project** and upload that ZIP.
+2. In Overleaf, select **New project → Existing project (.zip)** and upload
+   that ZIP.
 3. Set **Main document** to `main.tex` and **Compiler** to **pdfLaTeX**.
 4. Open `resume.tex` and replace the fictional name, experience, education,
    skills, and contact details. Update both the display text and destination of
@@ -94,6 +100,27 @@ Overleaf documents this workflow in
 The individual template ZIPs contain `main.tex` at the root so there is one clear
 main document. The collection ZIP is intended for the GitHub repository handoff;
 upload a single template ZIP to Overleaf.
+
+### Can I copy-paste a single `.tex` file?
+
+No. In every template, `main.tex` loads the custom formatting from
+`resume-matcher.sty` and the content from `resume.tex`. The `resume.tex` file
+contains your details but has no document setup of its own. Neither `.tex`
+file compiles by itself.
+
+If you start with a blank Overleaf project, upload all three required files
+into the project's root folder, then follow steps 3–6 above. You can also
+create three files with those exact names and paste each file's matching
+contents. Keep `main.tex` as the main document and edit your details in
+`resume.tex`.
+
+Replace both the visible labels and destinations of contact links, and update
+`pdftitle` and `pdfauthor` in `main.tex`. Escape special characters in ordinary
+text, for example `\&`, `\%`, and `\_`; see [Customize](#customize).
+Your replacement content may need spacing adjustments or additional pages.
+
+A single-file version would need the formatting and resume content embedded
+in one complete document. Single-file exports are not included in this collection.
 
 ## What's in each project
 
@@ -211,11 +238,13 @@ Overleaf supplies these packages. Once installed, compilation needs no network a
 
 ## Maintain and release the collection
 
-This `resume-matcher-templates` directory is ready to use as the repository root
-under the [resume-matcher organization](https://github.com/resume-matcher).
+The GitHub repository is
+[srbhr/resume-matcher-templates](https://github.com/srbhr/resume-matcher-templates)
+and is private. Download links require access to that repository.
 Keep its `.gitignore`, license, notices, and complete directory structure.
-No repository name is hard-coded into download links. GitHub and Overleaf gallery
-publication are separate later steps; these files have not been published.
+Template download and preview links use relative paths. An Overleaf gallery
+listing has not been published; upload an individual template ZIP to your own
+Overleaf project using the instructions above.
 
 The copy in `shared/resume-matcher.sty` is the maintained source. Each template
 has a checked-in copy so it works independently. Edit the shared version and run:
