@@ -1,0 +1,118 @@
+% SPDX-License-Identifier: Apache-2.0
+% Fictional sample: replace the text, dates, links, and PDF metadata with your own.
+% Social/profile destinations deliberately use example.com, not real accounts.
+% Escape LaTeX special characters: \& \% \$ \# \_ \{ \}.
+% Bold: \textbf{...}; italic: \textit{...}; link: \href{https://...}{label}.
+% Delete a complete section (heading plus content) to hide it; move it to reorder.
+
+% Arguments: first name, remaining names, job title, location, contact rows.
+% \ResumeLocation in the contacts reuses the location argument above.
+\resumeheader{Alex}{Morgan}{Software Engineer}{Bengaluru, India}{
+  \contactline{
+    \contact{envelope}{mailto:alex.morgan@example.com}{alex.morgan@example.com}\contactsep
+    \contact{phone}{tel:+12025550147}{+1 202 555 0147}\contactsep
+    \contact{map-marker-alt}{}{\ResumeLocation}
+  }
+  \contactline{
+    \contact{globe}{https://example.com}{example.com}\contactsep
+    \contact{linkedin}{https://example.com/linkedin}{LinkedIn: your-name}\contactsep
+    \contact{github}{https://example.com/github}{GitHub: your-name}
+  }
+}
+
+% The main and sidebar columns paginate independently.
+% Keep each column's sections together here; switch only once to the sidebar.
+\begin{resumecolumns}
+\resumesection{Summary}
+Software engineer with five years of experience building reliable web applications.
+Combines thoughtful product design with maintainable APIs, accessible interfaces,
+and practical performance improvements. Enjoys mentoring engineers and contributing
+to open-source tools.
+
+\resumesection{Experience}
+% Arguments: company, role, location, dates.
+\experience{Northstar Labs}{Senior Software Engineer}{Bengaluru, India}{2023 -- Present}
+\begin{highlights}
+  \item Led a team of four engineers delivering a customer analytics platform
+    used by 8,000 monthly active users.
+  \item Reduced API response times by \textbf{38\%} through query optimization,
+    caching, and performance monitoring.
+  \item Introduced accessible component patterns and review guidelines across
+    three product teams.
+\end{highlights}
+
+\experience{Meridian Systems}{Software Engineer}{Remote}{2021 -- 2023}
+\begin{highlights}
+  \item Built and maintained REST APIs and responsive interfaces for a
+    subscription management product.
+  \item Automated release checks, reducing deployment preparation from two
+    hours to twenty minutes.
+  \item Partnered with designers and support teams to improve onboarding
+    completion by \textbf{24\%}.
+\end{highlights}
+
+\resumesection{Projects}
+% Arguments: project, role/technology, dates, URL (or {} to omit).
+\project{Open Workspace}{TypeScript, React, Python, PostgreSQL}{2024 -- Present}{https://example.com/workspace}
+\begin{highlights}
+  \item Created an open-source workspace for organizing applications,
+    documents, and project notes.
+  \item Added keyboard navigation, full-text search, and exportable reports.
+\end{highlights}
+
+\project{Community Data Explorer}{Python, FastAPI, public datasets}{2023}{https://example.com/explorer}
+\begin{highlights}
+  \item Published an interactive dashboard that makes local public data
+    easier to search and understand.
+\end{highlights}
+
+\resumesection{Training \& Certifications}
+\textbf{Cloud Architecture Foundations}\par
+Continuing professional development, 2024.
+
+% CUSTOM SECTIONS: copy a pattern below, rename the heading, and uncomment it.
+% Plain text (objective, volunteering, or a personal statement):
+% \resumesection{Volunteering}
+% Mentor at a local community programming workshop.
+%
+% Item list (publications, research, or leadership):
+% \resumesection{Publications}
+% \project{A Practical Guide to Web Accessibility}{Community journal}{2025}{}
+% \begin{highlights}
+%   \item Published a guide to inclusive interface patterns.
+%   \plainitem\textit{Available as an open-access article.}
+% \end{highlights}
+%
+% String list (interests or affiliations):
+% \resumesection{Interests}
+% \begin{highlights}
+%   \item Open-source software
+%   \item Community mentoring
+% \end{highlights}
+
+\resumesidebar
+
+\resumesection{Skills}
+\skillgroup{Languages}{Python, TypeScript, JavaScript, SQL}
+\skillgroup{Frameworks}{React, Next.js, FastAPI, Node.js}
+\skillgroup{Tools}{Git, Linux, Docker, PostgreSQL, Playwright}
+\skillgroup{Practice}{API design, accessibility, testing, code review}
+
+\resumesection{Languages}
+English (professional proficiency), Hindi (native).
+
+\resumesection{Education}
+% Arguments: institution, degree, location, dates.
+\education{Central Institute of Technology}{B.Tech. in Computer Science}{Bengaluru, India}{2017 -- 2021}
+\vspace{2pt}
+Graduated with distinction. Coursework in algorithms, databases, and
+human-computer interaction.
+
+\resumesection{Awards}
+\textbf{Engineering Impact Award}\par
+Northstar Labs, 2024. Recognized for improving application reliability.
+
+\resumesection{Links}
+\href{https://example.com}{Portfolio}\par
+\href{https://example.com/github}{Open-source projects}
+\end{resumecolumns}

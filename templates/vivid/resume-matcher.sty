@@ -1,0 +1,234 @@
+% SPDX-License-Identifier: Apache-2.0
+% Resume Matcher contributors, 2026.
+% Canonical copy: shared/resume-matcher.sty. Run scripts/release.py to sync.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{resume-matcher}[2026/09/06 Resume Matcher standalone templates]
+
+\newif\ifRMmodern
+\newif\ifRMclassic
+\newif\ifRMclean
+\newif\ifRMvivid
+\newif\ifRMcolumns
+\newif\ifRMsidebar
+\newif\ifResumeIcons
+\ResumeIconsfalse
+\DeclareOption{swiss-single}{}
+\DeclareOption{swiss-two-column}{\RMcolumnstrue}
+\DeclareOption{modern}{\RMmoderntrue}
+\DeclareOption{modern-two-column}{\RMmoderntrue\RMcolumnstrue}
+\DeclareOption{latex}{\RMclassictrue}
+\DeclareOption{clean}{\RMcleantrue}
+\DeclareOption{vivid}{\RMvividtrue\RMcolumnstrue}
+\DeclareOption*{\PackageError{resume-matcher}{Unknown template option: \CurrentOption}{Use one of the seven documented template IDs.}}
+\ProcessOptions\relax
+
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+% TeX Live fonts: no system-font installation or uploaded font files required.
+% Scalable Latin Modern math avoids size substitutions in letter-spaced headings.
+\RequirePackage{lmodern}
+\RequirePackage{tgtermes}
+\RequirePackage[scale=0.95]{tgheros}
+\RequirePackage{tgcursor}
+\ifRMclassic\else\renewcommand{\familydefault}{\sfdefault}\fi
+\RequirePackage[margin=12mm]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{tabularx}
+\RequirePackage{enumitem}
+\RequirePackage{needspace}
+\RequirePackage{paracol}
+\RequirePackage{microtype}
+\RequirePackage{fontawesome5}
+\RequirePackage{xurl}
+\RequirePackage[hidelinks,unicode]{hyperref}
+
+\definecolor{ResumeAccent}{HTML}{1D4ED8}
+\definecolor{ResumeInk}{HTML}{000000}
+\definecolor{ResumeBody}{HTML}{1F2937}
+\definecolor{ResumeMuted}{HTML}{4B5563}
+\definecolor{ResumeRule}{HTML}{9CA3AF}
+\definecolor{ResumeLightRule}{HTML}{D1D5DB}
+\definecolor{ResumeTag}{HTML}{F3F4F6}
+\newlength{\ResumeSectionGap}
+\setlength{\ResumeSectionGap}{10pt}
+\newlength{\ResumeItemGap}
+\setlength{\ResumeItemGap}{5pt}
+\newcommand{\ResumeLineSpread}{1.08}
+\newcommand{\ResumeNameSize}{26}
+\newcommand{\ResumeColumnRatio}{0.65}
+\ifRMvivid\renewcommand{\ResumeColumnRatio}{0.63}\fi
+\newcommand{\ResumeHeadingFont}{\rmfamily}
+\ifRMclean\renewcommand{\ResumeHeadingFont}{\sffamily}\fi
+
+\AtBeginDocument{%
+  \pagestyle{empty}%
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \linespread{\ResumeLineSpread}\selectfont
+  \color{ResumeBody}%
+  \raggedright
+  \setlength{\emergencystretch}{2em}%
+  \clubpenalty=10000
+  \widowpenalty=10000
+}
+
+% Inline contacts can wrap BETWEEN items; use short labels for long URLs.
+\newcommand{\contact}[3]{%
+  \ifResumeIcons
+    {\color{ResumeMuted}%
+      \ifRMvivid
+        \textcircled{\raisebox{0.1ex}{\tiny\faIcon{#1}}}%
+      \else\faIcon{#1}\fi}\,\nobreak
+  \fi
+  \if\relax\detokenize{#2}\relax #3\else\href{#2}{#3}\fi
+}
+\newcommand{\contactsep}{\unskip\hspace{0.65em}\textcolor{ResumeMuted}{\textbar}\hspace{0.65em}\allowbreak}
+\newcommand{\contactline}[1]{#1\par}
+\newcommand{\ResumeLocation}{}
+
+% First name, remaining name(s), title, location, contact rows.
+% Location is a separate line only in the classic LaTeX design.
+\newcommand{\resumeheader}[5]{%
+  \begingroup
+  \renewcommand{\ResumeLocation}{#4}%
+  \ifRMcolumns
+    \ifRMmodern\raggedright\else\ifRMvivid\raggedright\else\centering\fi\fi
+  \else\centering\fi
+  {\ResumeHeadingFont\fontsize{\ResumeNameSize}{30}\selectfont\color{ResumeInk}%
+    \ifRMvivid
+      {\bfseries\color{ResumeAccent}#1} {\mdseries\color{ResumeAccent!60!white}#2}%
+    \else\ifRMclassic\bfseries\scshape #1 #2%
+    \else\ifRMclean\mdseries #1 #2\else\bfseries #1 #2\fi\fi\fi\par}
+  \ifRMmodern
+    \vspace{3pt}{\color{ResumeAccent}\rule{\ifRMcolumns 48mm\else 16mm\fi}{1.6pt}}\par
+  \fi
+  \if\relax\detokenize{#3}\relax\else
+    \vspace{3pt}{\ifRMvivid\ttfamily\else\ifRMclassic\itshape\fi\fi #3\par}%
+  \fi
+  \ifRMclassic
+    \if\relax\detokenize{#4}\relax\else\vspace{2pt}#4\par\fi
+  \fi
+  \vspace{5pt}
+  {\footnotesize\color{ResumeMuted}%
+    \ifRMclassic\else\ifRMclean\else\ttfamily\fi\fi
+    #5\par}
+  \endgroup
+  \ifRMmodern\else\ifRMclassic\else\ifRMclean\else\ifRMvivid\else
+    \vspace{6pt}{\color{ResumeRule}\hrule height 0.5pt}%
+  \fi\fi\fi\fi
+  \vspace{3pt}
+}
+
+\newcommand{\resumesection}[1]{%
+  \par\addvspace{\ResumeSectionGap}%
+  \Needspace{5\baselineskip}%
+  {\ResumeHeadingFont\bfseries\color{ResumeInk}%
+    \ifRMsidebar\fontsize{11}{13}\else\fontsize{12}{14}\fi\selectfont
+    \ifRMmodern\color{ResumeAccent}\MakeUppercase{#1}%
+    \else\ifRMvivid\color{ResumeAccent}\scshape #1%
+    \else\ifRMclean\color{ResumeMuted}\mdseries\fontsize{13}{15}\selectfont\textls[100]{\MakeUppercase{#1}}%
+    \else\ifRMclassic #1\else\MakeUppercase{#1}\fi\fi\fi\fi\par}
+  \nobreak\vspace{2pt}%
+  \ifRMvivid\else
+    {\ifRMmodern\color{ResumeAccent}\hrule height 1pt
+    \else\ifRMclassic\color{ResumeInk}\else
+      \ifRMclean\color{ResumeLightRule}\else\color{ResumeRule}\fi
+    \fi\hrule height 0.5pt\fi}%
+  \fi
+  \nobreak\vspace{4pt}\nobreak
+}
+
+% Wrapping columns for entry headings; long titles/dates cannot collide.
+\newcommand{\RMrow}[2]{%
+  \begingroup
+  \setlength{\tabcolsep}{0pt}%
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{8pt}}>{\raggedleft\arraybackslash}p{0.29\linewidth}@{}}
+    #1 & #2
+  \end{tabularx}\par
+  \endgroup
+}
+% Enter horizontal mode before color/size changes so p-column baselines align.
+\newcommand{\RMmeta}[1]{\leavevmode{\footnotesize\color{ResumeMuted}\ifRMclassic\else\ifRMclean\else\ttfamily\fi\fi #1}}
+\newcommand{\RMjoin}[2]{#1\if\relax\detokenize{#1}\relax\else\if\relax\detokenize{#2}\relax\else\enspace\textbar\enspace\fi\fi #2}
+
+% Company, role, location, dates. All four fields may be left empty.
+\newcommand{\experience}[4]{%
+  \par\addvspace{\ResumeItemGap}\Needspace{4\baselineskip}%
+  \ifRMclassic
+    \RMrow{\textbf{#1}}{\textbf{#4}}\nobreak
+    \RMrow{\textit{#2}}{\textit{#3}}%
+  \else\ifRMclean
+    \RMrow{\textbf{#1}\if\relax\detokenize{#2}\relax\else\if\relax\detokenize{#1}\relax\else\enspace\textbar\enspace\fi{\color{ResumeMuted}#2}\fi}{\RMmeta{\RMjoin{#3}{#4}}}%
+  \else\ifRMvivid
+    \textbf{#1}\if\relax\detokenize{#2}\relax\else\if\relax\detokenize{#1}\relax\else\enspace\textbar\enspace\fi{\color{ResumeMuted}#2}\fi\par\nobreak
+    \RMmeta{\RMjoin{#4}{#3}}\par
+  \else
+    \RMrow{\textbf{#2}}{\RMmeta{#4}}\nobreak
+    {\small\textbf{\RMjoin{#1}{#3}}\par}%
+  \fi\fi\fi
+  \nobreak\vspace{2pt}\nobreak
+}
+
+% Project name, role/technology, dates, URL. The URL is optional.
+\newcommand{\project}[4]{%
+  \par\addvspace{\ResumeItemGap}\Needspace{4\baselineskip}%
+  \RMrow{\textbf{#1}}{\RMmeta{#3}}\nobreak
+  {\small #2\par}\nobreak
+  \if\relax\detokenize{#4}\relax\else
+    {\footnotesize\url{#4}\par}\nobreak
+  \fi
+  \vspace{2pt}\nobreak
+}
+
+% Institution, degree, location, dates; stacked in narrow sidebars.
+\newcommand{\education}[4]{%
+  \par\addvspace{\ResumeItemGap}\Needspace{4\baselineskip}%
+  \ifRMsidebar
+    \textbf{#1}\par\nobreak
+    #2\par\nobreak
+    \RMmeta{\RMjoin{#3}{#4}}\par
+  \else
+    \ifRMclassic
+      \RMrow{\textbf{#1}}{\textbf{#4}}\nobreak
+      \RMrow{\textit{#2}}{\textit{#3}}%
+    \else\ifRMclean
+      \RMrow{\textbf{#1}\if\relax\detokenize{#2}\relax\else\if\relax\detokenize{#1}\relax\else\enspace\textbar\enspace\fi{\color{ResumeMuted}#2}\fi}{\RMmeta{\RMjoin{#3}{#4}}}%
+    \else
+      \RMrow{\textbf{#1}}{\RMmeta{#4}}\nobreak
+      {\small\textbf{\RMjoin{#2}{#3}}\par}%
+    \fi\fi
+  \fi
+}
+
+\newcommand{\RMbullet}{\ifRMvivid\textcolor{ResumeAccent}{\ensuremath{\rightarrow}}\else\textbullet\fi}
+\newenvironment{highlights}{%
+  \begin{itemize}[leftmargin=1.3em,label=\RMbullet,itemsep=2pt,parsep=0pt,topsep=2pt,partopsep=0pt]
+}{\end{itemize}\par}
+% Within highlights, use \plainitem for an unbulleted description row.
+\newcommand{\plainitem}{\item[]}
+\newcommand{\skillgroup}[2]{\par\addvspace{3pt}\textbf{#1:} #2\par}
+\newcommand{\skilltag}[1]{%
+  {\setlength{\fboxsep}{2.5pt}\setlength{\fboxrule}{0.3pt}%
+    \fcolorbox{ResumeLightRule}{ResumeTag}{\scriptsize\ttfamily\strut #1}}\hspace{3pt}\allowbreak
+}
+
+% paracol lets both columns continue onto further pages. Never wrap a whole
+% column in a minipage: it would become an unbreakable box and clip long CVs.
+\newenvironment{resumecolumns}{%
+  \setlength{\columnsep}{9mm}%
+  \columnratio{\ResumeColumnRatio}%
+  \ifRMvivid\setlength{\columnseprule}{0pt}%
+  \else\ifRMmodern
+    \setlength{\columnseprule}{1pt}\colseprulecolor{ResumeAccent}%
+  \else
+    \setlength{\columnseprule}{0.4pt}\colseprulecolor{ResumeLightRule}%
+  \fi\fi
+  \begin{paracol}{2}\raggedright
+}{\end{paracol}}
+\newcommand{\resumesidebar}{\switchcolumn\RMsidebartrue\raggedright}
+\endinput

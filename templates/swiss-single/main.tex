@@ -1,0 +1,26 @@
+% SPDX-License-Identifier: Apache-2.0
+% Resume Matcher -- Swiss Single Column
+% OVERLEAF: main document = main.tex; compiler = pdfLaTeX.
+% Start editing in resume.tex. This folder is a complete standalone project.
+\documentclass[10pt,a4paper]{article} % Replace a4paper with letterpaper for US Letter.
+\usepackage[swiss-single]{resume-matcher}
+
+% OPTIONAL FORMATTING: all dimensions are normal LaTeX lengths.
+\geometry{top=12mm,bottom=12mm,left=12mm,right=12mm}
+\setlength{\ResumeSectionGap}{10pt}
+\setlength{\ResumeItemGap}{5pt}
+\renewcommand{\ResumeLineSpread}{1.08}
+\renewcommand{\ResumeNameSize}{26}
+% Accent affects Modern, Modern Two Column, and Vivid.
+% Blue: 1D4ED8; green: 15803D; orange: F97316; red: DC2626.
+\definecolor{ResumeAccent}{HTML}{1D4ED8}
+\ResumeIconsfalse % Change to \ResumeIconstrue to show contact icons.
+% Two-column designs only: proportion of the usable width for the main column.
+% \renewcommand{\ResumeColumnRatio}{0.65}
+
+% Update PDF metadata as well as the visible contact information in resume.tex.
+\hypersetup{pdftitle={Alex Morgan - Resume},pdfauthor={Alex Morgan}}
+
+\begin{document}
+\input{resume}
+\end{document}

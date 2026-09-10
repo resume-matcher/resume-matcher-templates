@@ -1,0 +1,8 @@
+Resume Matcher - Modern Two Column
+Copyright 2026 Resume Matcher contributors
+
+LaTeX adaptation of the Resume Matcher web resume template.
+Source: https://github.com/srbhr/Resume-Matcher
+Upstream snapshot: 0932418c (Release 1.3 Crescendolls).
+This distribution contains new LaTeX source, not the original React/CSS files.
+Licensed under the Apache License, Version 2.0; see LICENSE.
