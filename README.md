@@ -402,5 +402,5 @@ collaborate, or just say hi, feel free to reach out!
 
 - Website: [srbhr.com](https://srbhr.com)
 - LinkedIn: [linkedin.com/in/srbhr](https://www.linkedin.com/in/srbhr/)
-- Twitter/X: [@srbhrai](https://twitter.com/srbhrai)
+- Twitter/X: [@srbhr_r](https://x.com/srbhr_r)
 - GitHub: [srbhr](https://github.com/srbhr)
