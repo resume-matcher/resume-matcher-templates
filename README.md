@@ -306,7 +306,7 @@ that provides it with `tlmgr install <package>` and compile again.
 
 The GitHub repository is
 [resume-matcher/resume-matcher-templates](https://github.com/resume-matcher/resume-matcher-templates)
-and is private. Download links require access to that repository.
+and is public.
 Keep its `.gitignore`, license, notices, and complete directory structure.
 Template download and preview links use relative paths. An Overleaf gallery
 listing has not been published; upload an individual template ZIP to your own
