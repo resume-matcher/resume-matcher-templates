@@ -13,7 +13,9 @@ to Overleaf, edit the sample content, and compile with **pdfLaTeX**.
 ![Templates](https://img.shields.io/badge/Templates-7-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 ![Compiler](https://img.shields.io/badge/Compiler-pdfLaTeX-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 ![Overleaf](https://img.shields.io/badge/Overleaf-ZIP%20upload-FFF?labelColor=F0F0E8&logo=overleaf&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)
-![Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+[![License](https://img.shields.io/github/license/resume-matcher/resume-matcher-templates?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://github.com/resume-matcher/resume-matcher-templates/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/resume-matcher/resume-matcher-templates?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://github.com/resume-matcher/resume-matcher-templates/stargazers)
+[![Forks](https://img.shields.io/github/forks/resume-matcher/resume-matcher-templates?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://github.com/resume-matcher/resume-matcher-templates/forks)
 ![version](https://img.shields.io/badge/Based%20on-1.3%20Crescendolls-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 
 [![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Resume%20Matcher-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://resumematcher.fyi) [![Resume Matcher Stars](https://img.shields.io/github/stars/srbhr/Resume-Matcher?label=Resume%20Matcher%20stars&labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://github.com/srbhr/Resume-Matcher)
