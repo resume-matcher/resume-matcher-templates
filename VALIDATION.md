@@ -1,5 +1,14 @@
 # Validation
 
+> [!WARNING]
+> **Not yet re-run for the current sample.** On 9 October 2026 every template's
+> `resume.tex` was switched from the Alex Morgan sample to the Sarah Chen sample,
+> and per-template ZIPs moved into the template folders. These sources have not been
+> compiled since: no TeX installation was available. The results below describe the
+> previous sample. `previews/*.pdf` and `previews/*.png` still show Alex Morgan until
+> `python3 scripts/release.py` is run, and `python3 scripts/verify.py` should be run
+> before the next release.
+
 Rechecked locally on 6 September 2026 using **pdfLaTeX / TeX Live 2025 and 2026**
 (`pdfTeX 1.40.28` and `1.40.29`) and Poppler. No Overleaf project was created or
 uploaded. The 2025 run used a TinyTeX 2025.09 base with the required packages from
@@ -48,9 +57,10 @@ a clean standalone directory.
 
 ## Sample data and archive audit
 
-The resume content was written as fictional demonstration data. No uploaded
-applicant resume or application database was used. The sample uses Alex Morgan,
-Northstar Labs, Meridian Systems, invented achievements, and placeholder contacts.
+The current sample is Sarah Chen, the fictional demonstration resume from the
+Resume Matcher app (Fernway Payments, Kestrel Health, Bluepine Analytics, invented
+achievements, and placeholder contacts). No uploaded applicant resume was used.
+The results in this section were recorded for the previous Alex Morgan sample.
 Real city and technology names provide context; coincidental matches to people or
 organizations are possible.
 

@@ -1,20 +1,41 @@
 # Resume Matcher: LaTeX Classic
 
-A standalone LaTeX adaptation of Resume Matcher's `latex` template.
-All example names, employers, achievements, and contact details are fictional.
-The sample was written for this template; no uploaded applicant resume was used.
-Social/profile links point to `example.com` placeholders. Replace their targets
-and labels before using the resume.
+A standalone LaTeX adaptation of Resume Matcher's `latex` template, filled in
+with Sarah Chen, the fictional sample resume from the Resume Matcher app. Edit
+`resume.tex` to make it yours. All names, employers, achievements, and contact
+details are fictional. Social/profile links point to `example.com` placeholders.
+Replace their targets and labels before using the resume.
+
+[![LaTeX Classic preview](preview.jpg)](preview.pdf)
+
+The preview shows this design as rendered by the Resume Matcher app
+([PDF](preview.pdf)). The LaTeX output keeps the design's visual character, but
+line breaks and spacing differ. The preview PDF keeps the app's own sample
+profile links, which are not `example.com` placeholders.
+
+**Overleaf upload:** [`resume-matcher-latex.zip`](./resume-matcher-latex.zip) contains `main.tex`, `resume.tex`,
+`resume-matcher.sty`, and this project's README, LICENSE, and NOTICE.
+
+## Files
+
+| File | Purpose |
+| ---- | ------- |
+| `resume.tex` | Resume content: edit this |
+| `main.tex` | Paper size, spacing, colors, icons, PDF metadata |
+| `resume-matcher.sty` | Template formatting commands |
+| `resume-matcher-latex.zip` | Ready-to-upload Overleaf project |
+| `preview.jpg`, `preview.pdf` | App rendering of this design |
+| `LICENSE`, `NOTICE` | Apache-2.0 license and attribution |
 
 ## Overleaf
 
 > **Three files are required.** This is a standalone project that requires
 > `main.tex`, `resume.tex`, and `resume-matcher.sty` together. Copy-pasting a
 > single `.tex` file into Overleaf will not work. Upload the complete template
-> ZIP, or ZIP this entire folder and upload it.
+> ZIP, [`resume-matcher-latex.zip`](./resume-matcher-latex.zip), included in this folder.
 
 1. In Overleaf, select **New project → Existing project (.zip)** and upload
-   this template's ZIP.
+   [`resume-matcher-latex.zip`](./resume-matcher-latex.zip) from this folder.
 2. Set the main document to `main.tex` and the compiler to **pdfLaTeX**.
 3. Open `resume.tex` and replace the sample name, experience, education, skills,
    and contact details. Update both the visible labels and destinations of links.
@@ -42,10 +63,38 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
 Alternatively, run `latexmk -pdf main.tex`. The output is `main.pdf`.
 
+### No TeX installed? Use TinyTeX
+
+[TinyTeX](https://yihui.org/tinytex/) is a small TeX Live distribution that
+installs into your user folder without administrator rights. Compiling locally
+keeps your resume on your own computer; nothing is uploaded.
+
+1. Install TinyTeX.
+   - macOS or Linux:
+
+     ```sh
+     curl -sL "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+     ```
+
+   - Windows: download and run
+     [`install-bin-windows.bat`](https://yihui.org/tinytex/install-bin-windows.bat).
+
+2. Open a new terminal so `pdflatex` and `tlmgr` are on your `PATH`, then
+   install the packages these templates use:
+
+   ```sh
+   tlmgr install lm tex-gyre geometry xcolor tools enumitem needspace paracol microtype fontawesome5 xurl hyperref iftex
+   ```
+
+3. Run the `pdflatex` commands above from the folder containing `main.tex`.
+
+If compilation stops with `File '<name>.sty' not found`, install the package
+that provides it with `tlmgr install <package>` and compile again.
+
 ## Editing
 
 - `resume.tex`: name, title, contacts, summary, experience, projects, education,
-  skills, languages, training, awards, and commented custom-section examples.
+  skills, languages, certifications, and commented custom-section examples.
 - `main.tex`: A4/Letter paper, margins, spacing, name size, icons, accent color,
   and PDF title/author. Update the PDF metadata when replacing the sample name.
 - `resume-matcher.sty`: included formatting commands. Usually no edits are needed.
