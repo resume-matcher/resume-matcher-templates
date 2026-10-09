@@ -42,9 +42,9 @@ def compile_project(engine: str, folder: Path) -> None:
         raise RuntimeError(f"Layout/font problems in {folder.name}:\n" + "\n".join(errors))
 
 
-def package_template(slug: str, dist: Path) -> Path:
+def package_template(slug: str) -> Path:
     """Place main.tex at ZIP root so Overleaf finds it without extra configuration."""
-    target = dist / f"resume-matcher-{slug}.zip"
+    target = ROOT / "templates" / slug / f"resume-matcher-{slug}.zip"
     with ZipFile(target, "w", compression=ZIP_DEFLATED) as archive:
         for name in PROJECT_FILES:
             archive.write(ROOT / "templates" / slug / name, name)
@@ -68,10 +68,11 @@ def package_collection(dist: Path) -> Path:
     with ZipFile(target, "w", compression=ZIP_DEFLATED) as archive:
         paths = [ROOT / name for name in ("README.md", "LICENSE", "NOTICE", ".gitignore", "VALIDATION.md")]
         paths += [ROOT / "shared/resume-matcher.sty", ROOT / "scripts/release.py", ROOT / "scripts/verify.py"]
+        paths += sorted((ROOT / "assets").glob("*.png"))
         for slug in TEMPLATES:
             paths += [ROOT / "templates" / slug / name for name in PROJECT_FILES]
             paths += [ROOT / "previews" / f"{slug}.{suffix}" for suffix in ("pdf", "png")]
-            paths += [dist / f"resume-matcher-{slug}.zip"]
+            paths += [ROOT / "templates" / slug / name for name in ("preview.jpg", "preview.pdf", f"resume-matcher-{slug}.zip")]
         for path in sorted(paths):
             relative = path.relative_to(ROOT)
             if not path.is_file():
@@ -98,7 +99,7 @@ def main() -> None:
     dist.mkdir(exist_ok=True)
     previews.mkdir(exist_ok=True)
     for slug in TEMPLATES:
-        archive = package_template(slug, dist)
+        archive = package_template(slug)
         verify_archive(archive, engine, renderer, previews, slug)
         print(f"Verified {slug}: {archive.relative_to(ROOT)}", flush=True)
     collection = package_collection(dist)
