@@ -7,16 +7,15 @@
 
 % Arguments: first name, remaining names, job title, location, contact rows.
 % \ResumeLocation in the contacts reuses the location argument above.
-\resumeheader{Alex}{Morgan}{Software Engineer}{Bengaluru, India}{
+\resumeheader{Sarah}{Chen}{Senior Software Engineer}{San Francisco, CA}{
   \contactline{
-    \contact{envelope}{mailto:alex.morgan@example.com}{alex.morgan@example.com}\contactsep
-    \contact{phone}{tel:+12025550147}{+1 202 555 0147}\contactsep
+    \contact{envelope}{mailto:sarah.chen@example.com}{sarah.chen@example.com}\contactsep
+    \contact{phone}{tel:+14155550142}{+1 (415) 555-0142}\contactsep
     \contact{map-marker-alt}{}{\ResumeLocation}
   }
   \contactline{
-    \contact{globe}{https://example.com}{example.com}\contactsep
-    \contact{linkedin}{https://example.com/linkedin}{LinkedIn: your-name}\contactsep
-    \contact{github}{https://example.com/github}{GitHub: your-name}
+    \contact{linkedin}{https://example.com/linkedin}{LinkedIn: sarahchen-dev}\contactsep
+    \contact{github}{https://example.com/github}{GitHub: sarahchen-dev}
   }
 }
 
@@ -24,51 +23,55 @@
 % Keep each column's sections together here; switch only once to the sidebar.
 \begin{resumecolumns}
 \resumesection{Summary}
-Software engineer with five years of experience building reliable web applications.
-Combines thoughtful product design with maintainable APIs, accessible interfaces,
-and practical performance improvements. Enjoys mentoring engineers and contributing
-to open-source tools.
+Senior software engineer with 6 years of backend experience in Python and Go,
+including 3 years shipping LLM features to production. Designs retrieval pipelines
+and the offline evaluations that gate prompt and model changes.
 
 \resumesection{Experience}
 % Arguments: company, role, location, dates.
-\experience{Northstar Labs}{Senior Software Engineer}{Bengaluru, India}{2023 -- Present}
+\experience{Fernway Payments}{Senior Software Engineer}{San Francisco, CA}{Jul 2024 -- Present}
 \begin{highlights}
-  \item Led a team of four engineers delivering a customer analytics platform
-    used by 8,000 monthly active users.
-  \item Reduced API response times by \textbf{38\%} through query optimization,
-    caching, and performance monitoring.
-  \item Introduced accessible component patterns and review guidelines across
-    three product teams.
+  \item Shipped a RAG support assistant (Python, FastAPI, pgvector) that resolves
+    \textbf{38\%} of merchant tickets without handoff.
+  \item Built an evaluation suite of 1,200 labeled conversations with LLM-as-judge
+    and exact-match scorers; the team runs it in CI before merging prompt or model changes.
+  \item Cut LLM spend by \textbf{46\%} by routing ticket classification to a fine-tuned
+    8B model and caching repeat queries in Redis.
+  \item Rewrote the payout scheduling service in Go, raising throughput from 3k to
+    11k requests per second at a p99 latency under 120 ms.
+  \item Led design reviews for a team of 6 and mentored 2 engineers through
+    promotion to Software Engineer II.
 \end{highlights}
 
-\experience{Meridian Systems}{Software Engineer}{Remote}{2021 -- 2023}
+\experience{Kestrel Health}{Software Engineer II}{Seattle, WA}{Apr 2022 -- Jun 2024}
 \begin{highlights}
-  \item Built and maintained REST APIs and responsive interfaces for a
-    subscription management product.
-  \item Automated release checks, reducing deployment preparation from two
-    hours to twenty minutes.
-  \item Partnered with designers and support teams to improve onboarding
-    completion by \textbf{24\%}.
+  \item Built a clinical note summarizer on Azure OpenAI with PHI redaction, used by
+    1,400 clinicians across 60 clinics.
+  \item Developed the patient scheduling API in TypeScript and Node.js for 1.2M
+    monthly users, and added contract tests that cut production incidents by
+    \textbf{40\%} year over year.
+  \item Implemented HIPAA audit logging and role-based access control across
+    12 internal services.
+\end{highlights}
+
+\experience{Bluepine Analytics}{Software Engineer}{Seattle, WA}{Jun 2020 -- Mar 2022}
+\begin{highlights}
+  \item Built Kafka ingestion workers in Python that process 500 GB of device
+    telemetry per day for customer dashboards.
+  \item Trained an Isolation Forest model in scikit-learn that flags sensor faults
+    for 200 enterprise customers.
 \end{highlights}
 
 \resumesection{Projects}
 % Arguments: project, role/technology, dates, URL (or {} to omit).
-\project{Open Workspace}{TypeScript, React, Python, PostgreSQL}{2024 -- Present}{https://example.com/workspace}
+\project{promptdiff}{Creator and Maintainer}{2024 -- Present}{https://example.com/promptdiff}
 \begin{highlights}
-  \item Created an open-source workspace for organizing applications,
-    documents, and project notes.
-  \item Added keyboard navigation, full-text search, and exportable reports.
-\end{highlights}
-
-\project{Community Data Explorer}{Python, FastAPI, public datasets}{2023}{https://example.com/explorer}
-\begin{highlights}
-  \item Published an interactive dashboard that makes local public data
-    easier to search and understand.
+  \item Open-source Python CLI that runs a prompt test suite against two model
+    versions and reports per-case regressions; 1.1k GitHub stars.
 \end{highlights}
 
 \resumesection{Training \& Certifications}
-\textbf{Cloud Architecture Foundations}\par
-Continuing professional development, 2024.
+\textbf{AWS Certified Solutions Architect -- Associate}
 
 % CUSTOM SECTIONS: copy a pattern below, rename the heading, and uncomment it.
 % Plain text (objective, volunteering, or a personal statement):
@@ -93,26 +96,16 @@ Continuing professional development, 2024.
 \resumesidebar
 
 \resumesection{Skills}
-\skillgroup{Languages}{Python, TypeScript, JavaScript, SQL}
-\skillgroup{Frameworks}{React, Next.js, FastAPI, Node.js}
-\skillgroup{Tools}{Git, Linux, Docker, PostgreSQL, Playwright}
-\skillgroup{Practice}{API design, accessibility, testing, code review}
+Python, Go, TypeScript, FastAPI, LLM Applications, RAG, LLM Evaluation, Fine-tuning (LoRA), PyTorch, pgvector, PostgreSQL, Redis, Kafka, AWS, Kubernetes, Terraform.
 
 \resumesection{Languages}
-English (professional proficiency), Hindi (native).
+English (native), Mandarin (professional).
 
 \resumesection{Education}
 % Arguments: institution, degree, location, dates.
-\education{Central Institute of Technology}{B.Tech. in Computer Science}{Bengaluru, India}{2017 -- 2021}
-\vspace{2pt}
-Graduated with distinction. Coursework in algorithms, databases, and
-human-computer interaction.
-
-\resumesection{Awards}
-\textbf{Engineering Impact Award}\par
-Northstar Labs, 2024. Recognized for improving application reliability.
+\education{University of Washington}{B.S. Computer Science}{}{2016 -- 2020}
 
 \resumesection{Links}
-\href{https://example.com}{Portfolio}\par
-\href{https://example.com/github}{Open-source projects}
+\href{https://example.com/linkedin}{LinkedIn: sarahchen-dev}\par
+\href{https://example.com/github}{GitHub: sarahchen-dev}
 \end{resumecolumns}
